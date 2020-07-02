@@ -6,6 +6,8 @@ window.addEventListener("load", ()=> {
     let cityName = document.querySelector(".location-city");
     let degree = document.querySelector(".temperature-degree");
     let icon = document.querySelector(".icon");
+    let tempSection = document.querySelector(".temperature");
+    const tempSpan = document.querySelector(".temperature span");
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
@@ -19,12 +21,22 @@ window.addEventListener("load", ()=> {
                 })
                 .then(data => {
                     /* Retrieves temperature, timezone, and description of weather in area. Add in more features later. */
-                    console.log(data);
                     const {temp} = data.main; 
                     const city = data.name;
                     const icon = data.weather[0].icon;
                     const description = data.weather[0].description;
-                    const kelvinToF = ((9/5) * (temp - 273) + 32).toFixed(0); 
+                    const kelvinToF = ((9/5) * (temp - 273) + 32).toFixed(0);  // Default to Fahrenheit
+                    /* Change between Fahrenheit and Celsius */
+                    tempSection.addEventListener("click", () => {
+                        if (tempSpan.textContent === "F") {
+                            let celsius = (kelvinToF - 32) / (9/5).toFixed(0);
+                            degree.textContent = celsius; 
+                            tempSpan.textContent = 'C';
+                        } else {
+                            degree.textContent = kelvinToF;
+                            tempSpan.textContent = 'F';
+                        }
+                    })
                     /* Set DOM elements to retrieved data. */
                     const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`
                     document.getElementById("icon").src = iconURL;
