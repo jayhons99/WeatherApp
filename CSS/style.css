@@ -38,3 +38,36 @@ body {
     font-size: 30px;
     cursor: pointer;
 }
+
+.service a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.service a:hover {
+    text-decoration: underline;
+}
+
+.temperature {
+    margin-bottom: 100px;
+}
+
+footer {
+    margin-top: 50px;
+}
+
+.city-search > input {
+    outline: none;
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.city-search > button {
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 12px;
+}
+
+.city-search > button:hover {
+    cursor: pointer;
+}
