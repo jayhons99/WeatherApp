@@ -1,3 +1,4 @@
+
 /* Retrieves location when page loads */
 window.addEventListener("load", ()=> {
     let long;
@@ -14,7 +15,7 @@ window.addEventListener("load", ()=> {
             long = pos.coords.longitude;
             lat = pos.coords.latitude;
             /* API retrieved from https://openweathermap.org */ 
-            const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=de881718d16b4ed2ac9774f9d99c81ff`;
+            const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${id}`;
             fetch(api)
                 .then(response => {
                     return response.json();
